@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:LocationPOC" x:Class="LocationPOC.MainPage"
+                 xmlns:maps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps">
+    <ContentPage.Content>
+        <StackLayout>
+            <maps:Map x:Name="map"
+                      
+                      VerticalOptions="FillAndExpand" />
+        
+        <Button Text="GetLocation" Clicked="Handle_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
