@@ -40,7 +40,7 @@ namespace LocationPOC
             if (status == Plugin.Permissions.Abstractions.PermissionStatus.Granted)
             {
 
-                map.MapType = MapType.Hybrid;
+                map.MapType = MapType.Satellite;
                 var location = await Geolocation.GetLocationAsync();
 
                 //var location = await Geolocation.GetLastKnownLocationAsync();
