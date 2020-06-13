@@ -39,7 +39,11 @@ namespace LocationPOC
 
             if (status == Plugin.Permissions.Abstractions.PermissionStatus.Granted)
             {
-                var location = await Geolocation.GetLastKnownLocationAsync();
+
+                map.MapType = MapType.Hybrid;
+                var location = await Geolocation.GetLocationAsync();
+
+                //var location = await Geolocation.GetLastKnownLocationAsync();
 
                 if (location != null)
                 {
@@ -49,11 +53,21 @@ namespace LocationPOC
                         Label = "Current",
                         Address = "Current Location",
                         Position = new Position(location.Latitude,location.Longitude),
-                        Rotation = 33.3f,
+                        //Rotation = 33.3f,
                         Tag = "id_tokyo"
                     };
 
                     map.Pins.Add(currentPin);
+                    // Add Circles
+                    var circle1 = new Circle();
+                    circle1.StrokeWidth = 2f;
+                    circle1.StrokeColor = Color.Red;
+                    circle1.FillColor = Color.Transparent;
+                    circle1.Center = new Position(location.Latitude, location.Longitude);
+                    circle1.Radius = Distance.FromMeters(50);
+                    map.Circles.Add(circle1);
+                    //map.Circles.Add(CreateShiftedCircle(circle1, 0d, 0.05d, Color.Yellow));
+                    //map.Circles.Add(CreateShiftedCircle(circle1, 0d, 0.10d, Color.Green));
                     map.MoveToRegion(MapSpan.FromCenterAndRadius(
                        new Position(location.Latitude, location.Longitude), Distance.FromMiles(0.3)));
 
